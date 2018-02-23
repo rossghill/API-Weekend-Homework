@@ -1,9 +1,14 @@
+// -------------------
 const app = function() {
   // console.log('hello world!');
   const url = "https://restcountries.eu/rest/v2/all";
   // const url 2 = "https://api.giphy.com/v1/gifs/trending?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&limit=25&rating=G";
   makeRequest(url, requestComplete);
+
+  const mapDiv = document.getElementById('main-map');
+  const map = new MapWrapper(mapDiv, {lat:0, lng:0}, 1);
 }
+// -------------------
 
 const makeRequest = function(url, callback) {
   const request = new XMLHttpRequest();
@@ -29,8 +34,6 @@ const populateList = function(countries) {
     option.innerText = country.name;
     option.value = index;
     select.appendChild(option);
-
-
   })
 }
 
