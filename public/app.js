@@ -1,6 +1,7 @@
 const app = function() {
   // console.log('hello world!');
-  const url = "https://api.giphy.com/v1/gifs/trending?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&limit=25&rating=G"
+  const url = "https://restcountries.eu/rest/v2/all";
+  // const url 2 = "https://api.giphy.com/v1/gifs/trending?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&limit=25&rating=G";
   makeRequest(url, requestComplete);
 }
 
@@ -14,23 +15,22 @@ const makeRequest = function(url, callback) {
 const requestComplete = function() {
   if (this.status != 200) return;
   const jsonString = this.responseText;
-  const parasedString = JSON.parse(jsonString);
-  const gifsObject = parasedString.data
-  populateList(gifsObject);
+  const countries = JSON.parse(jsonString);
+  // const gifsObject = parasedString.data
+  console.log(countries);
+  populateList(countries);
 }
 
-const populateList = function(gifs) {
-  const list = document.getElementById("gif-list");
+const populateList = function(countries) {
+  const select = document.getElementById("countries-select");
 
-console.log(gifs);
-  gifs.forEach(function(gif) {
-    console.log(gif.id);
-    const listItem = document.createElement("li");
-    const img = document.createElement("img");
+  countries.forEach(function(country, index) {
+    const option = document.createElement("option");
+    option.innerText = country.name;
+    option.value = index;
+    select.appendChild(option);
 
-    img.src = gif.images.original.url;
-    listItem.appendChild(img);
-    list.appendChild(listItem);
+
   })
 }
 
