@@ -1,6 +1,7 @@
 body {
-  background-color: wheat;
+  background-image: url("https://image.ibb.co/gUxSTH/color4.png");
   text-align: center;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 #main-map {
@@ -13,5 +14,5 @@ body {
 }
 
 #gif-container {
-  
+
 }
