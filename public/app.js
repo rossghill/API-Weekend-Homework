@@ -29,8 +29,7 @@ const requestComplete2 = function() {
   const jsonString = this.responseText;
   const gifsObject = JSON.parse(jsonString);
   const gif = gifsObject.data
-  console.log(gif);
-  // displayGIF(gif);
+  displayGIF(gif);
 }
 
 const populateList = function(countries) {
@@ -63,17 +62,15 @@ const getGifInfo = function(countries) {
   const country = countries[index];
   let gifURL = "https://api.giphy.com/v1/gifs/search?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&q=" + country.name + "&limit=1&offset=0&rating=G&lang=en";
   makeRequest(gifURL, requestComplete2);
-
 }
 
-const displayGIF = function(countries) {
+const displayGIF = function(gif) {
+  console.log(gif[0].images.fixed_height.url);
+    const gifDisplay = document.getElementById("gif-container");
+    const gifImg = document.getElementById("gif-img");
 
-
-    const gif = document.getElementById("gif-container")
-
-    gif.innerText = gifURL;
-
-
+    gifImg.src = gif[0].images.fixed_height.url;
+    gifDisplay.appendChild(gifImg);
 
   }
 
