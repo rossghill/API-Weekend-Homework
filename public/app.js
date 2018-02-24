@@ -2,7 +2,7 @@
 const app = function() {
   // console.log('hello world!');
   const url = "https://restcountries.eu/rest/v2/all";
-  // const url 2 = "https://api.giphy.com/v1/gifs/trending?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&limit=25&rating=G";
+  const url2 = "https://api.giphy.com/v1/gifs/trending?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&limit=25&rating=G";
   makeRequest(url, requestComplete);
 
   const mapDiv = document.getElementById('main-map');
@@ -22,7 +22,6 @@ const requestComplete = function() {
   const jsonString = this.responseText;
   const countries = JSON.parse(jsonString);
   // const gifsObject = parasedString.data
-  console.log(countries);
   populateList(countries);
 }
 
@@ -31,10 +30,27 @@ const populateList = function(countries) {
 
   countries.forEach(function(country, index) {
     const option = document.createElement("option");
-    option.innerText = country.name;
+    countryNameText = country.name;
+    option.innerText = countryNameText;
     option.value = index;
     select.appendChild(option);
   })
+
+    select.addEventListener('change', function() {
+      displayCountryInfo(countries);
+      // displayGif(countryNameText);
+    });
 }
+
+const displayCountryInfo = function(countries) {
+  const index = document.getElementById("countries-select").value;
+  const country = countries[index];
+
+  const name = document.getElementById("name-display");
+  name.innerText = country.name;
+
+
+
+  }
 
 document.addEventListener('DOMContentLoaded', app);

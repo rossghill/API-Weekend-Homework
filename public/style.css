@@ -1,8 +1,17 @@
 body {
   background-color: wheat;
+  text-align: center;
 }
 
 #main-map {
   height: 300px;
   width: 100%;
+}
+
+#country-info {
+
+}
+
+#gif-container {
+  
 }
