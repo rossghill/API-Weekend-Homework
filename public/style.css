@@ -17,3 +17,13 @@ body {
 h2 {
   text-decoration: underline;
 }
+
+#column-container {
+  text-align: center;
+  margin: auto;
+  width: 600px;
+}
+
+#column-chart {
+
+}

@@ -74,6 +74,7 @@ const displayCountryInfo = function(countries) {
   const map = new MapWrapper(mapDiv, coords, 4);
   map.addMarker(coords);
 
+  makeColumnChart(coords);
   // capitalMap(coords);
 }
 
@@ -92,6 +93,19 @@ const displayGIF = function(gif) {
     gifImg.src = gif[0].images.fixed_height.url;
     gifDisplay.appendChild(gifImg);
   }
+
+const makeColumnChart = function(coords) {
+    const dataArray = [];
+    const coordsLat = coords.lat;
+    dataArray.push(coordsLat);
+    const coordsLng = coords.lng;
+    dataArray.push(coordsLng);
+
+    const latlongChart = new ColumnChart("Latitude/ Longitude", "Latitude/ Longitude", dataArray, ["Latitude", "Longitude"]);
+}
+
+
+
 
 //   const capitalMap = function(coords) {
 //     const coordsLat = coords.lat;
