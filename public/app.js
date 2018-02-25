@@ -53,18 +53,28 @@ const displayCountryInfo = function(countries) {
 
   const name = document.getElementById("name-display");
   name.innerText = country.name;
+
   const capital = document.getElementById("capital");
   capital.innerText = `Capital: ${country.capital}`;
+
+  // const pop_element = document.createElement("i");
+  // pop_element.className = "fas fa-users";
   const population = document.getElementById("population");
   population.innerText = `Population: ${country.population}`;
+
   const timezone = document.getElementById("timezone");
-  timezone.innerText = `Timezone : ${country.timezones}`;
+  timezone.innerText = `Timezones : ${country.timezones}`;
+
+  const region = document.getElementById("region");
+  region.innerText = `Region : ${country.region}`;
 
 
   const coords = {lat: country.latlng[0], lng: country.latlng[1]};
   const mapDiv = document.querySelector('#main-map');
   const map = new MapWrapper(mapDiv, coords, 4);
   map.addMarker(coords);
+
+  // capitalMap(coords);
 }
 
 const getGifInfo = function(countries) {
@@ -76,13 +86,23 @@ const getGifInfo = function(countries) {
 }
 
 const displayGIF = function(gif) {
-  console.log(gif[0].images.fixed_height.url);
     const gifDisplay = document.getElementById("gif-container");
     const gifImg = document.getElementById("gif-img");
 
     gifImg.src = gif[0].images.fixed_height.url;
     gifDisplay.appendChild(gifImg);
-
   }
+
+//   const capitalMap = function(coords) {
+//     const coordsLat = coords.lat;
+//     const coordsLng = coords.lng;
+//     console.log(coordsLat);
+//     console.log(coordsLng);
+//     const secondMap = document.getElementById('second-map');
+//     capitalView = new CapitalMapWrapper(secondMap, coords, 20);
+//     panorama = new google.maps.StreetViewPanorama(secondMap,  {position: {lat: 55.953252, lng: -3.188267},
+//               pov: {heading: 165, pitch: 0},
+//               zoom: 1});
+// }
 
 document.addEventListener('DOMContentLoaded', app);

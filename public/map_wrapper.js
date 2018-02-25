@@ -5,6 +5,13 @@ const MapWrapper = function (container, coords, zoom) {
     mapTypeId: 'hybrid'
   })
 }
+
+const CapitalMapWrapper = function (container, coords, zoom) {
+  this.googleMap = new google.maps.Map(container, {
+    center: coords,
+    zoom: zoom,
+  })
+}
 MapWrapper.prototype.addMarker = function(coords) {
   const marker = new google.maps.Marker({
     position: coords,

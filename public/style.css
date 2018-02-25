@@ -9,12 +9,9 @@ body {
   width: 100%;
 }
 
-#country-info {
-
-}
-
-#gif-container {
-
+#second-map {
+  height: 250px;
+  width: 250px;
 }
 
 h2 {
