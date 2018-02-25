@@ -9,19 +9,26 @@
     <script type="text/javascript" src="map_wrapper.js"></script>
   </head>
   <body>
+    <h1>Select a country: </h1>
     <select id="countries-select">
       <option value="select-country" selected disabled>Select country</option>
     </select>
     <p></p>
-    <section id="main-map">
+    <section id="main-map"></section>
 
-  </section>
-  <section id="country-info">
-    <div id="gif-container">
-      <h2 id="name-display"></h2>
-      <img id="gif-img" src="" alt="gif related to selected country">
-    </div>
 
-  </section>
+    <section id="country-info">
+      <div id="gif-container">
+        <h2 id="name-display"></h2>
+        <img id="gif-img">
+      </div>
+      <div id="stats">
+        <p id="population"></p>
+        <p id="timezone"></p>
+        <p id="capital"></p>
+      </div>
+    </section>
+
+
   </body>
 </html>

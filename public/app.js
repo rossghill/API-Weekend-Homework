@@ -1,8 +1,6 @@
 // -------------------
 const app = function() {
-  // console.log('hello world!');
   const url = "https://restcountries.eu/rest/v2/all";
-  const url2 = "https://api.giphy.com/v1/gifs/search?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&q=test&limit=1&offset=0&rating=G&lang=en";
   makeRequest(url, requestComplete);
 
   const mapDiv = document.getElementById('main-map');
@@ -55,12 +53,25 @@ const displayCountryInfo = function(countries) {
 
   const name = document.getElementById("name-display");
   name.innerText = country.name;
+  const capital = document.getElementById("capital");
+  capital.innerText = `Capital: ${country.capital}`;
+  const population = document.getElementById("population");
+  population.innerText = `Population: ${country.population}`;
+  const timezone = document.getElementById("timezone");
+  timezone.innerText = `Timezone : ${country.timezones}`;
+
+
+  const coords = {lat: country.latlng[0], lng: country.latlng[1]};
+  const mapDiv = document.querySelector('#main-map');
+  const map = new MapWrapper(mapDiv, coords, 4);
+  map.addMarker(coords);
 }
 
 const getGifInfo = function(countries) {
   const index = document.getElementById("countries-select").value;
   const country = countries[index];
   let gifURL = "https://api.giphy.com/v1/gifs/search?api_key=x51oU2WEGxWhQ4eytBg2WGQ05Dn54sGA&q=" + country.name + "&limit=1&offset=0&rating=G&lang=en";
+
   makeRequest(gifURL, requestComplete2);
 }
 
